@@ -1,6 +1,7 @@
 'use strict';
 
 const allHorns = [];
+let keywords =[];
 
 function NewGallery(image_url, title, description, keyword, horns) {
   this.image_url = image_url;
@@ -10,7 +11,9 @@ function NewGallery(image_url, title, description, keyword, horns) {
   this.horns = horns;
 
   allHorns.push(this);
+  keywords.push(this.keyword);
 }
+
 
 NewGallery.prototype.render = function () {
   const template = $('#photo-template').html();
@@ -27,15 +30,7 @@ NewGallery.prototype.render = function () {
 
   $('main').append($newSection);
 
-  let dropDown = $('keyword').html();
 
-  let $newOption = $('<option></option>');
-
-  $newOption.html(dropDown);
-
-  $newOption.find('option').text(this.keyword);
-
-  $('select').append($newOption);
 };
 
 $.get('data/page-1.json', data => {
@@ -44,4 +39,4 @@ $.get('data/page-1.json', data => {
   });
 });
 
-
+console.log(keywords);
