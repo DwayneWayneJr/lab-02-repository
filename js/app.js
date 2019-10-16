@@ -27,9 +27,9 @@ NewGallery.prototype.render = function () {
 
   $('main').append($newSection);
 
-  const dropDown = $('select').html();
+  let dropDown = $('keyword').html();
 
-  const $newOption = $('<option></option>');
+  let $newOption = $('<option></option>');
 
   $newOption.html(dropDown);
 
