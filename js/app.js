@@ -3,15 +3,20 @@
 const allHorns = [];
 let keywords =[];
 
-function NewGallery(image_url, title, description, keyword, horns) {
+function NewGallery(image_url, title, description, horns) {
   this.image_url = image_url;
   this.title = title;
   this.description = description;
-  this.keyword = keyword;
   this.horns = horns;
 
   allHorns.push(this);
-  keywords.push(this.keyword);
+
+}
+
+function List (keyword) {
+  this.keyword = keyword;
+
+  keywords.push(this.keyword)
 }
 
 
@@ -35,8 +40,12 @@ NewGallery.prototype.render = function () {
 
 $.get('data/page-1.json', data => {
   data.forEach(horn => {
-    new NewGallery(horn.image_url, horn.title, horn.description, horn.keyword, horn.horns).render();
+    new NewGallery(horn.image_url, horn.title, horn.description, horn.horns).render();
   });
 });
 
-console.log(keywords);
+
+// const uniqueSet = new Set(keywords);
+// const backToKeywords = [...uniqueSet];
+// console.log(backToKeywords);
+

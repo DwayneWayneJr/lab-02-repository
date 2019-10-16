@@ -10,5 +10,5 @@
 # Number and name of feature: Feature 2 Filter Images
 # Estimate of time needed to complete: 1 hour
 # Start time: 10:30 am
-# Finish time: 
+# Finish time: paused at 12:30, resumed at 1, paused again at 1:30 
 # Actual time needed to complete:
