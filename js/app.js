@@ -26,6 +26,16 @@ NewGallery.prototype.render = function () {
   $newSection.find('img').attr('src', this.image_url);
 
   $('main').append($newSection);
+
+  const dropDown = $('select').html();
+
+  const $newOption = $('<option></option>');
+
+  $newOption.html(dropDown);
+
+  $newOption.find('option').text(this.keyword);
+
+  $('select').append($newOption);
 };
 
 $.get('data/page-1.json', data => {
@@ -33,3 +43,5 @@ $.get('data/page-1.json', data => {
     new NewGallery(horn.image_url, horn.title, horn.description, horn.keyword, horn.horns).render();
   });
 });
+
+
