@@ -1,7 +1,7 @@
 'use strict';
 
 const allHorns = [];
-let keywords =[];
+let keywords = [];
 
 function NewGallery(horn) {
   this.image_url = horn.image_url;
@@ -14,18 +14,18 @@ function NewGallery(horn) {
 
 }
 
-function uniqueList () {
+function uniqueList() {
   const uniqueKeywords = [];
 
   allHorns.forEach(image => {
-    if(!uniqueKeywords.includes(image.keyword)){
+    if (!uniqueKeywords.includes(image.keyword)) {
       uniqueKeywords.push(image.keyword);
     }
-  })
+  });
   uniqueKeywords.forEach(keyword => {
     let optionTag = `<option value=${keyword}>${keyword}</option>`;
     $('select').append(optionTag);
-  })
+  });
 }
 
 
@@ -52,47 +52,33 @@ NewGallery.prototype.render = function () {
 $.get('data/page-1.json', data => {
   data.forEach(horn => {
     new NewGallery(horn).render();
-  })
+  });
   uniqueList();
 });
 
 //page event handler
-$('#btn1').click(function(){
+$('#btn1').click(function () {
+  $('#photo-template').siblings().remove();
   $.get('data/page-1.json', data => {
     data.forEach(horn => {
       new NewGallery(horn).render();
-    })
-  })
-})
+    });
+  });
+});
 
-$('#btn2').click(function() {
+$('#btn2').click(function () {
+  $('#photo-template').siblings().remove();
   $.get('data/page-2.json', data => {
     data.forEach(horn => {
       new NewGallery(horn).render();
-    })
-  })
-})
+    });
+  });
+});
 
-// $('select').on('change', function(){
-//   let thingThatWasClicked = $(this).val();
-//   if(thingThatWasClicked !== 'default'){
-//     $('section').hide();
-//     $(`section.${thingThatWasClicked}`).fadeIn();
-//   }
-// })
-
-// $('select').on('change', function(){
-//   let thingThatWasClicked = $(this).val();
-//   if(thingThatWasClicked !== 'default'){
-//     $('section').hide();
-//     $(`section.${thingThatWasClicked}`).fadeIn();
-//   }
-// })
-
-$('select').on('change', function(){
+$('select').on('change', function () {
   let thingThatWasClicked = $(this).val();
-  if(thingThatWasClicked !== 'default'){
+  if (thingThatWasClicked !== 'default') {
     $('section').hide();
     $(`section.${thingThatWasClicked}`).fadeIn();
   }
-})
+});

@@ -16,15 +16,15 @@
 # Feature 1, Day 2
 # Pagination
 # Estimate of time: 45 minutes
-# Start time: 10:07am
-# Finish time:
-# Actual time needed: 
+# Start time: 10:07 am
+# Finish time: 11:22 am
+# Actual time needed: 60 minutes
 
 
 # Feature 2, Day 2
 # Templating
 # Estimate of time: 45 minutes
-# Start time:
+# Start time: 11:30 am
 # Finish time:
 # Actual time needed: 
 
