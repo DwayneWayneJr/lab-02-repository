@@ -3,20 +3,29 @@
 const allHorns = [];
 let keywords =[];
 
-function NewGallery(image_url, title, description, horns) {
-  this.image_url = image_url;
-  this.title = title;
-  this.description = description;
-  this.horns = horns;
+function NewGallery(horn) {
+  this.image_url = horn.image_url;
+  this.title = horn.title;
+  this.description = horn.description;
+  this.keyword = horn.keyword;
+  this.horns = horn.horns;
 
   allHorns.push(this);
 
 }
 
-function List (keyword) {
-  this.keyword = keyword;
+function uniqueList () {
+  const uniqueKeywords = [];
 
-  keywords.push(this.keyword)
+  allHorns.forEach(image => {
+    if(!uniqueKeywords.includes(image.keyword)){
+      uniqueKeywords.push(image.keyword);
+    }
+  })
+  uniqueKeywords.forEach(keyword => {
+    let optionTag = `<option value=${keyword}>${keyword}</option>`;
+    $('select').append(optionTag);
+  })
 }
 
 
@@ -29,7 +38,7 @@ NewGallery.prototype.render = function () {
 
   $newSection.find('h2').text(this.title);
 
-  $newSection.find('p').text(this.horns);
+  $newSection.find('p').text(this.description);
 
   $newSection.find('img').attr('src', this.image_url);
 
@@ -40,12 +49,7 @@ NewGallery.prototype.render = function () {
 
 $.get('data/page-1.json', data => {
   data.forEach(horn => {
-    new NewGallery(horn.image_url, horn.title, horn.description, horn.horns).render();
-  });
+    new NewGallery(horn).render();
+  })
+  uniqueList();
 });
-
-
-// const uniqueSet = new Set(keywords);
-// const backToKeywords = [...uniqueSet];
-// console.log(backToKeywords);
-
