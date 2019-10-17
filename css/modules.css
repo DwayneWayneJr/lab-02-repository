@@ -1,4 +1,17 @@
+main{
+  float:left;
+}
 img {
-  width: 100px;
-  height: 100px;
+  width: 350px;
+  height: 300px;
+  
+}
+
+footer{
+  clear:both;
+}
+section{
+  padding:10px;
+  float:left;
+  overflow-wrap:break-word;
 }
