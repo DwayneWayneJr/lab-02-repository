@@ -56,6 +56,39 @@ $.get('data/page-1.json', data => {
   uniqueList();
 });
 
+//page event handler
+$('#btn1').click(function(){
+  $.get('data/page-1.json', data => {
+    data.forEach(horn => {
+      new NewGallery(horn).render();
+    })
+  })
+})
+
+$('#btn2').click(function() {
+  $.get('data/page-2.json', data => {
+    data.forEach(horn => {
+      new NewGallery(horn).render();
+    })
+  })
+})
+
+// $('select').on('change', function(){
+//   let thingThatWasClicked = $(this).val();
+//   if(thingThatWasClicked !== 'default'){
+//     $('section').hide();
+//     $(`section.${thingThatWasClicked}`).fadeIn();
+//   }
+// })
+
+// $('select').on('change', function(){
+//   let thingThatWasClicked = $(this).val();
+//   if(thingThatWasClicked !== 'default'){
+//     $('section').hide();
+//     $(`section.${thingThatWasClicked}`).fadeIn();
+//   }
+// })
+
 $('select').on('change', function(){
   let thingThatWasClicked = $(this).val();
   if(thingThatWasClicked !== 'default'){
