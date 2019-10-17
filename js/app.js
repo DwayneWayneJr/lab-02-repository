@@ -42,6 +42,8 @@ NewGallery.prototype.render = function () {
 
   $newSection.find('img').attr('src', this.image_url);
 
+  $newSection.attr('class', this.keyword);
+
   $('main').append($newSection);
 
 
@@ -53,3 +55,11 @@ $.get('data/page-1.json', data => {
   })
   uniqueList();
 });
+
+$('select').on('change', function(){
+  let thingThatWasClicked = $(this).val();
+  if(thingThatWasClicked !== 'default'){
+    $('section').hide();
+    $(`section.${thingThatWasClicked}`).fadeIn();
+  }
+})
