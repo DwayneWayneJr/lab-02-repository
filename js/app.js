@@ -14,6 +14,17 @@ function NewGallery(horn) {
 
 }
 
+NewGallery.prototype.toHtml = function () {
+  console.log('hello');
+  let template = $('#horns-template').html();
+  let templateRender = Handlebars.compile(template);
+  return templateRender(this);
+};
+console.log(allHorns);
+// allHorns.forEach(image => {
+//   $('#photo-template').append(image.toHtml());
+// });
+
 function uniqueList() {
   const uniqueKeywords = [];
 
@@ -22,6 +33,7 @@ function uniqueList() {
       uniqueKeywords.push(image.keyword);
     }
   });
+
   uniqueKeywords.forEach(keyword => {
     let optionTag = `<option value=${keyword}>${keyword}</option>`;
     $('select').append(optionTag);
@@ -51,17 +63,20 @@ NewGallery.prototype.render = function () {
 
 $.get('data/page-1.json', data => {
   data.forEach(horn => {
-    new NewGallery(horn).render();
+    new NewGallery(horn);
   });
+  $('#photo-template').append(iterate over each index and append using template.toHtml());
   uniqueList();
 });
 
-//page event handler
-$('#btn1').click(function () {
+function page1() {
+ $('#btn1').click(function () {
+  // $('#photo-template').empty();
+  // $('#keyword').empty();
   $('#photo-template').siblings().remove();
   $.get('data/page-1.json', data => {
     data.forEach(horn => {
-      new NewGallery(horn).render();
+      // new NewGallery(horn).render();
     });
   });
 });
