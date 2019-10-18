@@ -1,19 +1,15 @@
-main {
-  float: left;
-}
-
 img {
   width: 385px;
   height: 300px;
-
 }
 
-footer {
-  clear: both;
+div {
+  text-align: right;
+  margin-right: 250px;
 }
 
-section {
+#photo-template {
   padding: 10px;
-  float: left;
-  overflow-wrap: break-word;
+  width: 100%;
+  text-overflow: hidden;
 }
