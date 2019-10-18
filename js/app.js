@@ -1,7 +1,8 @@
 'use strict';
 
-const allHorns = [];
+let allHorns = [];
 let keywords = [];
+let uniqueKeywords = [];
 
 function NewGallery(horn) {
   this.image_url = horn.image_url;
@@ -21,12 +22,10 @@ NewGallery.prototype.toHtml = function () {
   return templateRender(this);
 };
 console.log(allHorns);
-// allHorns.forEach(image => {
-//   $('#photo-template').append(image.toHtml());
-// });
 
 function uniqueList() {
-  const uniqueKeywords = [];
+  uniqueKeywords = [];
+  console.log(uniqueKeywords);
 
   allHorns.forEach(image => {
     if (!uniqueKeywords.includes(image.keyword)) {
@@ -34,6 +33,7 @@ function uniqueList() {
     }
   });
 
+  $('select').empty();
   uniqueKeywords.forEach(keyword => {
     let optionTag = `<option value=${keyword}>${keyword}</option>`;
     $('select').append(optionTag);
@@ -65,28 +65,38 @@ $.get('data/page-1.json', data => {
   data.forEach(horn => {
     new NewGallery(horn);
   });
-  $('#photo-template').append(iterate over each index and append using template.toHtml());
+  allHorns.forEach(image => {
+    $('#photo-template').append(image.toHtml());
+  });
   uniqueList();
 });
 
 function page1() {
- $('#btn1').click(function () {
-  // $('#photo-template').empty();
-  // $('#keyword').empty();
-  $('#photo-template').siblings().remove();
-  $.get('data/page-1.json', data => {
-    data.forEach(horn => {
-      // new NewGallery(horn).render();
+
+  $('#btn1').click(function () {
+    // $('#photo-template').empty();
+    // $('#keyword').empty();
+    $('#photo-template').siblings().remove();
+    $.get('data/page-1.json', data => {
+      data.forEach(horn => {
+        // new NewGallery(horn).render();
+      });
     });
   });
-});
+}
+page1();
 
 $('#btn2').click(function () {
-  $('#photo-template').siblings().remove();
+  $('#photo-template').empty();
+  allHorns = [];
   $.get('data/page-2.json', data => {
     data.forEach(horn => {
-      new NewGallery(horn).render();
+      new NewGallery(horn);
     });
+    allHorns.forEach(image => {
+      $('#photo-template').append(image.toHtml());
+    });
+    uniqueList();
   });
 });
 
@@ -94,6 +104,8 @@ $('select').on('change', function () {
   let thingThatWasClicked = $(this).val();
   if (thingThatWasClicked !== 'default') {
     $('section').hide();
+    $('#photo-template').show();
     $(`section.${thingThatWasClicked}`).fadeIn();
+    console.log(thingThatWasClicked);
   }
 });
