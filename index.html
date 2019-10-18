@@ -10,13 +10,15 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/layouts.css">
   <link rel="stylesheet" href="css/modules.css">
+
   <script id="horns-template" type="text/x-handlebars-template">
-    <section>
-      <h2>{{title}}</h2>
-      <img src="{{image_url}}" alt="">
-        <p>{{description}}</p>
-    </section>
-  </script>
+     <section class="{{keyword}}">
+    <h2>{{title}}</h2>
+    <img src="{{image_url}}" alt="{{keyword}}">
+    <p>{{description}}</p>
+  </section>
+</script>
+
 </head>
 
 <body>
@@ -32,9 +34,6 @@
 
   <main>
     <section id="photo-template">
-      <h2></h2>
-      <img src="" alt="">
-      <p></p>
     </section>
 
 
