@@ -1,17 +1,19 @@
-main{
-  float:left;
-}
-img {
-  width: 350px;
-  height: 300px;
-  
+main {
+  float: left;
 }
 
-footer{
-  clear:both;
+img {
+  width: 385px;
+  height: 300px;
+
 }
-section{
-  padding:10px;
-  float:left;
-  overflow-wrap:break-word;
+
+footer {
+  clear: both;
+}
+
+section {
+  padding: 10px;
+  float: left;
+  overflow-wrap: break-word;
 }
