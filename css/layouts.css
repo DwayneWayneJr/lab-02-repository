@@ -1,0 +1,19 @@
+h1 {
+  font-family: 'Cinzel Decorative',
+    cursive;
+  font-size: 64px;
+  text-align: center;
+}
+
+#photo-template {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+div {
+  text-align: center;
+  ;
+}
